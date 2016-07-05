@@ -31,17 +31,15 @@ animatePoints();
 //Refactored code below:
 
 var pointsArray = document.getElementsByClassName("point");
+var revealPoint = function(arrayIndex) {
+    arrayIndex.style.opacity = 1;
+    arrayIndex.style.transform = "scaleX(1) translateY(0)";
+    arrayIndex.style.msTransform = "scaleX(1) translateY(0)";
+    arrayIndex.style.WebKitTransform = "scaleX(1) translateY(0)";
+};
 
 var animatePoints = function(points) {
-    var revealPoint = function(index) {
-        points[index].style.opacity = 1;
-        points[index].style.transform = "scaleX(1) translateY(0)";
-        points[index].style.msTransform = "scaleX(1) translateY(0)";
-        points[index].style.WebKitTransform = "scaleX(1) translateY(0)";
-    };
-    for (var i = 0; i < points.length; i++) {
-        revealPoint(i);
-    }
+    forEach(pointsArray, revealPoint);
 };
 window.onload = function() {
     if (window.innerHeight > 950) {
