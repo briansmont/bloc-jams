@@ -45,6 +45,28 @@ body.landing {
     -moz-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
+.point:hover {
+    position: relative;
+    transition-property: background-color, color;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    background-color: black;
+    color: rgb(233,50,117);
+    box-shadow: 2px 2px 1px rgb(233,50,117);
+}
+.point:active {
+    position: relative;
+    transition-property: background-color, color, font-style;
+    transition-duration: .25s;
+    transition-timing-function: ease-out;
+    background-color: black;
+    color: rgb(233,50,117);
+    box-shadow: 2px 2px 1px rgb(233,50,117);
+    font-style: italic;
+}
+
+
+
 
 .point  .point-title {
     font-size: 1.25rem;
