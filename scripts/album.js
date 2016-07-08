@@ -26,7 +26,21 @@ var albumMarconi = {
         {title: 'Wrong phone number', duration: '2:15'}
     ]
 };
- var createSongRow = function(songNumber, songName, songLength) {
+var albumGreenDay = {
+    title: 'Nimrod',
+    artist: 'Green Day',
+    label: 'Reprise',
+    year: '1997',
+    albumArtUrl: 'https://upload.wikimedia.org/wikipedia/en/b/b0/Green_Day_-_Nimrod_cover.jpg',
+    songs: [
+        {title: 'Nice guys finish last', duration: '2:49'},
+        {title: 'Hitchin a ride', duration: '2:51'},
+        {title: 'The grouch', duration: '2:12'},
+        {title: 'Redundant', duration: '3:17'},
+        {title: 'Scattered', duration: '3:02'}
+    ]
+}; 
+var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number">' + songNumber + '</td>'
@@ -38,12 +52,13 @@ var albumMarconi = {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album) {    
     
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
@@ -56,8 +71,19 @@ var setCurrentAlbum = function(album) {
         
     }
 };
+var albums = [albumPicasso, albumMarconi, albumGreenDay];
+
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index ++;
+        if (index === albums.length) {
+            index = 0;
+        }
+    });
 };
 
 
